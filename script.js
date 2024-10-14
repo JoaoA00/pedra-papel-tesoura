@@ -1,4 +1,5 @@
-
+let humanScore = 0;
+let computerScore = 0;
 
 
 function getComputerChoice(){
@@ -25,3 +26,48 @@ function getHumanChoice(){
 
 }
 
+function playRound(humanChoice, computerChoice){
+
+    if (humanChoice == computerChoice) {
+        console.log('Empate! Os os dois colocaram ' + humanChoice);
+    } else if (humanChoice == 'pedra') {
+        if (computerChoice == 'tesoura') {
+            console.log('Você venceu! Pedra quebra a Tesoura');
+            humanScore++;
+            console.log(humanScore + ' x ' + computerScore);
+        } else {
+            //sobrou o papel
+            console.log('Você perdeu! Papel embrulha Pedra');
+            computerScore++;
+            console.log(humanScore + ' x ' + computerScore);
+        }
+    } else if (humanChoice == 'papel') {
+        if (computerChoice == 'tesoura') {
+            console.log('Você perdeu! Tesoura corta o Papel');
+            computerScore++;
+            console.log(humanScore + ' x ' + computerScore);
+        } else {
+            //sobrou a pedra
+            console.log('Você venceu! Papel embrulha Pedra');
+            humanScore++;
+            console.log(humanScore + ' x ' + computerScore);
+        }
+    } else { //tesoura
+        if (computerChoice == 'papel') {
+            console.log('Você venceu! Tesoura corta o Papel');
+            humanScore++;
+            console.log(humanScore + ' x ' + computerScore);
+        } else {
+            //sobrou a pedra
+            console.log('Você perdeu! Pedra quebra a Tesoura');
+            computerScore++;
+            console.log(humanScore + ' x ' + computerScore);
+        }
+    }
+
+}
+
+playRound(getHumanChoice(), getComputerChoice());
+playRound(getHumanChoice(), getComputerChoice());
+playRound(getHumanChoice(), getComputerChoice());
+playRound(getHumanChoice(), getComputerChoice());
