@@ -67,7 +67,10 @@ function playRound(humanChoice, computerChoice){
 
 }
 
-playRound(getHumanChoice(), getComputerChoice());
-playRound(getHumanChoice(), getComputerChoice());
-playRound(getHumanChoice(), getComputerChoice());
-playRound(getHumanChoice(), getComputerChoice());
+function playGame() {
+    for (let i = 0; i < 5; i++){
+        playRound(getHumanChoice(), getComputerChoice());
+    }
+}
+
+playGame();
