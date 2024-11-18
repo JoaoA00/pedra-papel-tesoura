@@ -68,9 +68,19 @@ function playRound(humanChoice, computerChoice){
 }
 
 function playGame() {
-    for (let i = 0; i < 5; i++){
-        playRound(getHumanChoice(), getComputerChoice());
-    }
+    const btnPedra = document.getElementById('pedra');
+    const btnPapel = document.getElementById('papel');
+    const btnTesoura = document.getElementById('tesoura');
+
+    btnPedra.addEventListener('click', function(){
+        playRound('pedra', getComputerChoice())
+    });
+    btnPapel.addEventListener('click', function(){
+        playRound('papel', getComputerChoice())
+    });
+    btnTesoura.addEventListener('click', function(){
+        playRound('tesoura', getComputerChoice())
+    });
 }
 
 playGame();
