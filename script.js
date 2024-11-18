@@ -29,57 +29,108 @@ function getHumanChoice(){
 function playRound(humanChoice, computerChoice){
 
     if (humanChoice == computerChoice) {
-        console.log('Empate! Os os dois colocaram ' + humanChoice);
+
+        return ['Empate! Os os dois colocaram ' + humanChoice, 'empatou'];
+
     } else if (humanChoice == 'pedra') {
+
         if (computerChoice == 'tesoura') {
-            console.log('Você venceu! Pedra quebra a Tesoura');
-            humanScore++;
-            console.log(humanScore + ' x ' + computerScore);
+
+            return ['Você venceu! Pedra quebra a Tesoura', 'venceu'];
+            
         } else {
             //sobrou o papel
-            console.log('Você perdeu! Papel embrulha Pedra');
-            computerScore++;
-            console.log(humanScore + ' x ' + computerScore);
+            return ['Você perdeu! Papel embrulha Pedra', 'perdeu'];
+            
         }
+
     } else if (humanChoice == 'papel') {
+
         if (computerChoice == 'tesoura') {
-            console.log('Você perdeu! Tesoura corta o Papel');
-            computerScore++;
-            console.log(humanScore + ' x ' + computerScore);
+
+            return ['Você perdeu! Tesoura corta o Papel', 'perdeu'];
+            
         } else {
             //sobrou a pedra
-            console.log('Você venceu! Papel embrulha Pedra');
-            humanScore++;
-            console.log(humanScore + ' x ' + computerScore);
+            return ['Você venceu! Papel embrulha Pedra', 'venceu'];
+            
         }
+
     } else { //tesoura
+        
         if (computerChoice == 'papel') {
-            console.log('Você venceu! Tesoura corta o Papel');
-            humanScore++;
-            console.log(humanScore + ' x ' + computerScore);
+
+            return ['Você venceu! Tesoura corta o Papel', 'venceu'];
+            
         } else {
             //sobrou a pedra
-            console.log('Você perdeu! Pedra quebra a Tesoura');
-            computerScore++;
-            console.log(humanScore + ' x ' + computerScore);
+            return ['Você perdeu! Pedra quebra a Tesoura', 'perdeu'];
+            
         }
     }
 
+}
+
+function attScore(resultado) {
+    const scoreHuman = document.getElementById('human');
+    const scoreComputer = document.getElementById('computer');
+
+
+    switch (resultado) {
+        case 'venceu':
+            humanScore++;
+            scoreHuman.textContent = humanScore;
+            break;
+        case 'perdeu':
+            computerScore++;
+            scoreComputer.textContent = computerScore;
+            break;
+    
+        default:
+            break;
+    }
+
+    if(humanScore == 5){
+        alert("Você venceu!");
+        resetScore();
+    } else if (computerScore == 5){
+        alert("Você perdeu!");
+        resetScore();
+    }
+}
+
+function resetScore(){
+    const scoreHuman = document.getElementById('human');
+    const scoreComputer = document.getElementById('computer');
+    
+    humanScore = 0;
+    computerScore = 0;
+    
+    scoreHuman.textContent = humanScore;
+    scoreComputer.textContent = computerScore;
 }
 
 function playGame() {
     const btnPedra = document.getElementById('pedra');
     const btnPapel = document.getElementById('papel');
     const btnTesoura = document.getElementById('tesoura');
+    const resultado = document.getElementById('result');
+    let arrResultado = "";
 
     btnPedra.addEventListener('click', function(){
-        playRound('pedra', getComputerChoice())
+        arrResultado = playRound('pedra', getComputerChoice());
+        resultado.textContent = arrResultado[0];
+        attScore(arrResultado[1]);
     });
     btnPapel.addEventListener('click', function(){
-        playRound('papel', getComputerChoice())
+        arrResultado = playRound('papel', getComputerChoice());
+        resultado.textContent = arrResultado[0];
+        attScore(arrResultado[1]);
     });
     btnTesoura.addEventListener('click', function(){
-        playRound('tesoura', getComputerChoice())
+        arrResultado = playRound('tesoura', getComputerChoice());
+        resultado.textContent = arrResultado[0];
+        attScore(arrResultado[1]);
     });
 }
 

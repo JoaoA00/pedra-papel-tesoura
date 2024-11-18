@@ -9,10 +9,23 @@
     <title>Pedra Papel Tesoura</title>
 </head>
 <body>
-    <button id="pedra">pedra</button>
-    <button id="papel">papel</button>
-    <button id="tesoura">tesoura</button>
-    
+    <div class="score">
+        <div class="score-div">
+            <p>Você</p>
+            <div class="score-number" id="human">0</div>
+        </div>
+        <p id="result">Resultado</p>
+        <div class="score-div">
+            <p>Computador</p>
+            <div class="score-number" id="computer">0</div>
+        </div>
+    </div>
+    <div class="content">
+        <button id="pedra">pedra</button>
+        <button id="papel">papel</button>
+        <button id="tesoura">tesoura</button>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
